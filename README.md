@@ -37,3 +37,12 @@ python 3.7 기준으로 작성되었다.
 * **arr (type = 4)**: child를 리스트로 가지고 있다. - \[, ] 로 둘러싸인 배열 타입 원소
 
 child가 사전일 경우, key값이 해당 edge의 이름을 나타낸다.
+
+## 3. 사용방법
+
+원하는 파일의 위치 path에 대해 트리 G를 추출하는 것은 다음과 같이 한다.
+```python
+pdftot = pdf_to_tree()
+G = pdftot.run(path)
+```
+클래스 내에 포함되어 있는 print문은 모두 제거해도 동작에 문제 없다.
