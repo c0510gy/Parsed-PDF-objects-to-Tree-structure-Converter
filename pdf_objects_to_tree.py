@@ -38,7 +38,7 @@ class pdf_to_tree(object):
         par_pdf = f.read()
         f.close()
 
-        par_pdf = re.sub(r'([0-9]+) 0 R', r'OBJ\1', par_pdf) # obj를 가리키는 문자열 OBJ{번호} 로 치환
+        par_pdf = re.sub(r'([0-9]+) 0 R', r' OBJ\1 ', par_pdf) # obj를 가리키는 문자열 OBJ{번호} 로 치환
 
         arr = re.split('obj [0-9]+ 0', par_pdf)
         objs_names = re.findall('obj [0-9]+ 0', par_pdf)
