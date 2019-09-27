@@ -114,7 +114,7 @@ class pdf_to_tree(object):
 
         s = s.split('\n' + ' ' * (inden - 2) + '>>')[0] # 마지막 >> 제거
 
-        keyreg = r'[\n][\s]{' + re.escape(str(inden))  + r'}[\/][\S]+[\s]'
+        keyreg = r'[\n][\s]{' + re.escape(str(inden))  + r'}[\/][\S]*[\s]'
         keys = re.findall(keyreg, s)
         items = re.split(keyreg, s)
 
@@ -134,7 +134,7 @@ class pdf_to_tree(object):
     def make_vertex(self, G, data, ign=False):
         v = None
         if isinstance(data, str):
-            if not ign and data[:3] == 'OBJ': # 오브젝트일 경우 (/Parent 등에서 ign = True)
+            if not ign and data[:3] == 'OBJ' and data[3:].isdigit(): # 오브젝트일 경우 (/Parent 등에서 ign = True)
                 return int(data[3:])
             v = self.Vertex(2)
             v.set_name(data)
